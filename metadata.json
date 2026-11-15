@@ -1,0 +1,8 @@
+{
+  "name": "NUAM Plataforma Tributaria",
+  "description": "Plataforma Web",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
