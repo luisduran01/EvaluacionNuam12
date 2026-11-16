@@ -23,14 +23,23 @@ export const realtimeBus = new EventEmitter();
 const connectionString =
   process.env.SUPABASE_DB_URL || process.env.DATABASE_URL || '';
 
-const pool = connectionString
-  ? new Pool({
+let pool: Pool | null = null;
+if (connectionString) {
+  try {
+    pool = new Pool({
       connectionString,
       ssl: { rejectUnauthorized: false },
       max: 5,
       connectionTimeoutMillis: 3000,
-    })
-  : null;
+    });
+    pool.on('error', (err) => {
+      console.warn('Supabase/PostgreSQL pool error — fallback en memoria activo:', err.message);
+    });
+  } catch (err) {
+    console.warn('No se pudo inicializar Pool de PostgreSQL, usando memoria:', err);
+    pool = null;
+  }
+}
 
 let pgReadyPromise: Promise<boolean> | null = null;
 
