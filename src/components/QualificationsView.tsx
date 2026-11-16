@@ -87,14 +87,16 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
-          <div className="text-[11px] font-semibold tracking-[0.14em] text-blue-700 dark:text-blue-400 uppercase">
-            Registro Regional de Emisores
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold tracking-[0.14em] text-[#D45120] dark:text-[#E65A28] uppercase">
+            <span className="w-1.5 h-1.5 bg-[#E65A28] inline-block" />
+            <span>REGISTRO REGIONAL DE EMISORES</span>
           </div>
-          <h1 className="font-display text-2xl font-bold text-slate-950 dark:text-white tracking-tight mt-1">
-            Calificaciones Tributarias
+          <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+            CALIFICACIONES TRIBUTARIAS
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
-            Administración de factores de crédito, dividendos y retenciones en Santiago, Lima y Colombia
+          <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1">
+            Administración de factores de crédito, dividendos y retenciones en Santiago, Lima y
+            Colombia
           </p>
         </div>
 
@@ -103,7 +105,7 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
             <button
               type="button"
               onClick={exportCsv}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#0D1524] hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#FBF8F3] dark:bg-[#161A22] hover:bg-[#EFE9DF] dark:hover:bg-[#1E232E] font-mono text-[11px] font-semibold uppercase text-[#111317] dark:text-slate-200 cursor-pointer whitespace-nowrap"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Exportar CSV</span>
@@ -113,7 +115,7 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
             <button
               type="button"
               onClick={onOpenNew}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0B1528] dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white text-xs font-semibold cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-[2px] bg-[#E65A28] hover:bg-[#D14D1E] text-white text-xs font-semibold cursor-pointer whitespace-nowrap"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Nueva Calificación</span>
@@ -123,29 +125,29 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
       </div>
 
       {/* Filters Toolbar */}
-      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D1524] p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+      <div className="rounded-[2px] border border-[#DFD8CD] dark:border-[#1F242D] bg-[#FBF8F3] dark:bg-[#11141A] p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         <div className="relative flex-1 max-w-sm">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <Search className="w-4 h-4 text-[#8B857C] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
             placeholder="Filtrar por emisor, RUT/RUC/NIT o tipo de renta..."
-            className="w-full h-10 pl-9 pr-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full h-10 pl-9 pr-3 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#F2EDE4] dark:bg-[#151921] font-mono text-xs text-[#111317] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E65A28]"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <div className="inline-flex items-center gap-1 p-1 rounded-lg bg-slate-100 dark:bg-slate-800">
+          <div className="inline-flex items-center gap-1 p-1 rounded-[2px] bg-[#EFE9DF] dark:bg-[#0D1016] border border-[#DDD6CB] dark:border-[#232833]">
             {(['ALL', 'CL', 'PE', 'CO'] as const).map((m) => (
               <button
                 key={m}
                 type="button"
                 onClick={() => setMarketFilter(m)}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium cursor-pointer transition-colors whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-[2px] font-mono text-[11px] font-semibold uppercase cursor-pointer transition-colors whitespace-nowrap ${
                   marketFilter === m
-                    ? 'bg-white dark:bg-slate-900 text-slate-950 dark:text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400'
+                    ? 'bg-[#0E1B2E] dark:bg-[#E65A28] text-white'
+                    : 'text-[#524E48] dark:text-slate-400 hover:text-[#111317] dark:hover:text-white'
                 }`}
               >
                 {m === 'ALL' ? 'Todos' : m}
@@ -154,11 +156,11 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
           </div>
 
           <div className="inline-flex items-center gap-1.5">
-            <Filter className="w-3.5 h-3.5 text-slate-400" />
+            <Filter className="w-3.5 h-3.5 text-[#8B857C]" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as 'ALL' | QualificationStatus)}
-              className="h-9 px-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 text-xs text-slate-700 dark:text-slate-200"
+              className="h-9 px-3 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#F2EDE4] dark:bg-[#151921] font-mono text-xs text-[#111317] dark:text-slate-200"
             >
               <option value="ALL">Todos los estados</option>
               <option value="VIGENTE">Vigente</option>
@@ -170,11 +172,11 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
       </div>
 
       {/* Data Table */}
-      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D1524] overflow-hidden">
+      <div className="rounded-[2px] border border-[#DFD8CD] dark:border-[#1F242D] bg-[#FBF8F3] dark:bg-[#11141A] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-[#F8FAFC] dark:bg-slate-900/70 border-b border-slate-100 dark:border-slate-800 text-[11px] font-semibold tracking-wider text-slate-500 dark:text-slate-400">
+              <tr className="bg-[#F5F0E8] dark:bg-[#0D1016] border-b border-[#E5DFD5] dark:border-[#1F242D] font-mono text-[11px] font-semibold tracking-wider uppercase text-[#6B665F] dark:text-slate-400">
                 <th className="py-3 px-5">EMISOR</th>
                 <th className="py-3 px-4">PLAZA / EJERCICIO</th>
                 <th className="py-3 px-4">TIPO DE RENTA</th>
@@ -184,38 +186,38 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
                 <th className="py-3 px-5 text-right">ACCIONES</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+            <tbody className="divide-y divide-[#E9E3D9] dark:divide-[#1B2029] text-xs">
               {filtered.map((q) => (
                 <tr
                   key={q.id}
-                  className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors"
+                  className="hover:bg-[#F5F0E8]/70 dark:hover:bg-[#161A22]/70 transition-colors"
                 >
                   <td className="py-3.5 px-5">
-                    <div className="font-semibold text-slate-950 dark:text-white">{q.emisor}</div>
-                    <div className="text-[11px] font-mono tabular-nums text-slate-500 dark:text-slate-400 mt-0.5">
+                    <div className="font-semibold text-[#111317] dark:text-white">{q.emisor}</div>
+                    <div className="text-[11px] font-mono tabular-nums text-[#6B665F] dark:text-slate-400 mt-0.5">
                       {q.rutEmisor}
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 whitespace-nowrap text-slate-600 dark:text-slate-300 font-mono tabular-nums">
+                  <td className="py-3.5 px-4 whitespace-nowrap text-[#524E48] dark:text-slate-300 font-mono tabular-nums">
                     {q.mercado} · {q.ejercicio}
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300 max-w-[240px] truncate">
+                  <td className="py-3.5 px-4 text-[#524E48] dark:text-slate-300 max-w-[240px] truncate">
                     {q.tipoRenta}
                   </td>
-                  <td className="py-3.5 px-4 text-right font-mono tabular-nums font-medium text-slate-950 dark:text-white whitespace-nowrap">
+                  <td className="py-3.5 px-4 text-right font-mono tabular-nums font-semibold text-[#111317] dark:text-white whitespace-nowrap">
                     ${q.montoBruto.toLocaleString('es-CL')}
                   </td>
-                  <td className="py-3.5 px-4 text-right font-mono tabular-nums text-slate-600 dark:text-slate-300 whitespace-nowrap">
+                  <td className="py-3.5 px-4 text-right font-mono tabular-nums text-[#524E48] dark:text-slate-300 whitespace-nowrap">
                     {q.factor8.toFixed(4)} / {q.factor10.toFixed(4)}
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
-                      className={`font-semibold ${
+                      className={`inline-block px-2 py-0.5 rounded-[2px] border font-mono text-[11px] font-semibold ${
                         q.estado === 'VIGENTE'
-                          ? 'text-emerald-600 dark:text-emerald-400'
+                          ? 'border-emerald-400/50 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
                           : q.estado === 'PRESENTADO'
-                            ? 'text-blue-600 dark:text-blue-400'
-                            : 'text-amber-600 dark:text-amber-400'
+                            ? 'border-sky-400/50 bg-sky-500/10 text-sky-700 dark:text-sky-400'
+                            : 'border-[#E65A28]/50 bg-[#E65A28]/10 text-[#D45120] dark:text-[#F27445]'
                       }`}
                     >
                       {q.estado}
@@ -228,7 +230,7 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
                           type="button"
                           onClick={() => onApprove(q)}
                           title="Aprobar a Vigente"
-                          className="p-1.5 rounded-lg text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 cursor-pointer"
+                          className="p-1.5 rounded-[2px] text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 cursor-pointer"
                         >
                           <CheckCircle2 className="w-4 h-4" />
                         </button>
@@ -238,7 +240,7 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
                           type="button"
                           onClick={() => onEdit(q)}
                           title="Editar"
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/40 cursor-pointer"
+                          className="p-1.5 rounded-[2px] text-[#6B665F] hover:text-[#E65A28] hover:bg-[#EFE9DF] dark:hover:bg-[#1E232E] cursor-pointer"
                         >
                           <Edit3 className="w-4 h-4" />
                         </button>
@@ -248,7 +250,7 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
                           type="button"
                           onClick={() => onDelete(q)}
                           title="Eliminar"
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 cursor-pointer"
+                          className="p-1.5 rounded-[2px] text-[#6B665F] hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 cursor-pointer"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -260,8 +262,8 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
               {filtered.length === 0 && (
                 <tr>
                   <td colSpan={7} className="py-10 text-center">
-                    <FileSpreadsheet className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <FileSpreadsheet className="w-8 h-8 text-[#8B857C] dark:text-slate-600 mx-auto mb-2" />
+                    <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400">
                       No se encontraron calificaciones para los filtros aplicados.
                     </p>
                   </td>

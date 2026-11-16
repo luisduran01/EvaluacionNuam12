@@ -10,6 +10,13 @@
 @layer base {
   body {
     font-family: var(--font-sans);
+    background-color: #F7F3ED;
+    color: #111317;
+  }
+
+  .dark body {
+    background-color: #0B0D10;
+    color: #F3F4F6;
   }
 
   h1, h2, h3, h4, .font-display {
@@ -19,6 +26,14 @@
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
+}
+
+.nuam-carbon-grid {
+  background-color: #0C0E12;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
 @media print {

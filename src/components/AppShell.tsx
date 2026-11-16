@@ -3,7 +3,6 @@ import {
   Activity,
   Bell,
   ChevronRight,
-  Clock,
   FileSpreadsheet,
   FolderUp,
   LayoutDashboard,
@@ -44,10 +43,10 @@ interface AppShellProps {
 
 const SECTION_TITLES: Record<NavSection, string> = {
   dashboard: 'Panel Ejecutivo',
-  qualifications: 'Calificaciones Tributarias',
-  dj1948: 'Carga Masiva DJ1948',
-  reports: 'Reportes en Tiempo Real',
-  users: 'Usuarios y Roles RBAC',
+  qualifications: 'Calificaciones',
+  dj1948: 'Carga DJ1948',
+  reports: 'Reportes en Vivo',
+  users: 'Usuarios y Roles',
 };
 
 export const AppShell: React.FC<AppShellProps> = ({
@@ -108,10 +107,10 @@ export const AppShell: React.FC<AppShellProps> = ({
 
   const roleLabel =
     session.user.role === 'admin'
-      ? 'Administrador'
+      ? 'ADMINISTRADOR'
       : session.user.role === 'operador'
-        ? 'Operador'
-        : 'Consultor';
+        ? 'OPERADOR'
+        : 'CONSULTOR';
 
   const handleNavClick = (id: NavSection) => {
     onSelectSection(id);
@@ -119,26 +118,36 @@ export const AppShell: React.FC<AppShellProps> = ({
   };
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-[#0B1528] dark:bg-[#070D1A] text-slate-100 border-r border-slate-800/90">
-      {/* Corporate Brand Lockup */}
-      <div className="h-16 px-5 flex items-center justify-between border-b border-slate-800/80 shrink-0">
+    <div className="flex flex-col h-full bg-[#0E1B2E] dark:bg-[#0B0D10] text-slate-100 border-r border-[#1E2E46] dark:border-[#1E222A]">
+      {/* Brand Lockup */}
+      <div className="h-16 px-5 flex items-center justify-between border-b border-white/10 dark:border-[#1E222A] shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-600 text-white font-display font-bold text-lg flex items-center justify-center">
-            N
+          <div className="w-8 h-8 rounded-[4px] bg-[#E65A28] flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none">
+              <rect
+                x="12"
+                y="4.2"
+                width="11"
+                height="11"
+                transform="rotate(45 12 4.2)"
+                stroke="#FFFFFF"
+                strokeWidth="2.2"
+              />
+            </svg>
           </div>
           <div>
-            <div className="font-display font-bold text-sm tracking-tight text-white leading-none">
+            <div className="font-display font-extrabold text-sm tracking-wide text-white leading-none">
               NUAM
             </div>
-            <div className="text-[10px] font-semibold tracking-[0.14em] text-blue-400 mt-1 leading-none">
-              MERCADO INTEGRADO
+            <div className="font-mono text-[9px] tracking-[0.16em] text-slate-400 uppercase mt-1 leading-none">
+              TERMINAL TRIBUTARIA
             </div>
           </div>
         </div>
         <button
           type="button"
           onClick={() => setMobileMenuOpen(false)}
-          className="lg:hidden p-2 rounded-lg text-slate-400 hover:bg-slate-800"
+          className="lg:hidden p-2 rounded-[2px] text-slate-400 hover:bg-white/10"
           aria-label="Cerrar menú"
         >
           <X className="w-4 h-4" />
@@ -147,8 +156,8 @@ export const AppShell: React.FC<AppShellProps> = ({
 
       {/* Navigation Links */}
       <div className="flex-1 overflow-y-auto px-3 py-6">
-        <div className="px-3 mb-2.5 text-[10px] font-semibold tracking-[0.16em] text-slate-400 uppercase">
-          Módulos Corporativos
+        <div className="px-3 mb-3 font-mono text-[10px] font-semibold tracking-[0.16em] text-slate-400 uppercase">
+          MÓDULOS OPERATIVOS
         </div>
         <nav className="space-y-1" aria-label="Navegación principal">
           {navItems.map((item) => {
@@ -159,15 +168,15 @@ export const AppShell: React.FC<AppShellProps> = ({
                 key={item.id}
                 type="button"
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-[2px] font-mono text-xs transition-colors cursor-pointer whitespace-nowrap border ${
                   active
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
+                    ? 'bg-[#162742] dark:bg-[#151921] text-white border-[#243B5E] dark:border-[#242934] border-l-2 border-l-[#E65A28] font-semibold'
+                    : 'text-slate-300 border-transparent hover:bg-white/5 hover:text-white'
                 }`}
               >
                 <Icon
                   className={`w-4 h-4 shrink-0 ${
-                    active ? 'text-white' : 'text-slate-400'
+                    active ? 'text-[#E65A28]' : 'text-slate-400'
                   }`}
                 />
                 <span className="truncate">{item.label}</span>
@@ -178,51 +187,53 @@ export const AppShell: React.FC<AppShellProps> = ({
       </div>
 
       {/* Sidebar Bottom Controls */}
-      <div className="p-3.5 border-t border-slate-800/80 space-y-2.5">
+      <div className="p-3.5 border-t border-white/10 dark:border-[#1E222A] space-y-2.5">
         <button
           type="button"
           onClick={onToggleDarkMode}
-          className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-slate-800 bg-slate-900/60 hover:bg-slate-800/70 text-xs font-medium text-slate-200 cursor-pointer"
+          className="w-full flex items-center justify-between px-3 py-2 rounded-[2px] border border-white/10 dark:border-[#1E222A] bg-[#132238] dark:bg-[#12151B] hover:bg-[#192D4A] dark:hover:bg-[#181C24] font-mono text-[10px] tracking-[0.08em] uppercase text-slate-200 cursor-pointer"
         >
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 truncate">
             {darkMode ? (
-              <Sun className="w-3.5 h-3.5 text-amber-400" />
+              <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             ) : (
-              <Moon className="w-3.5 h-3.5 text-slate-400" />
+              <Moon className="w-3.5 h-3.5 text-slate-300 shrink-0" />
             )}
-            <span>{darkMode ? 'Tema Claro' : 'Modo Oscuro'}</span>
+            <span className="truncate">
+              {darkMode ? 'MODO TERMINAL (DARK)' : 'MODO BEIGE & MARINO'}
+            </span>
           </span>
           <span
-            className={`w-8 h-4 rounded-full transition-colors p-0.5 flex items-center ${
-              darkMode ? 'bg-blue-600 justify-end' : 'bg-slate-700 justify-start'
+            className={`w-8 h-4 rounded-full transition-colors p-0.5 flex items-center shrink-0 ${
+              darkMode ? 'bg-[#E65A28] justify-end' : 'bg-slate-600 justify-start'
             }`}
           >
             <span className="w-3 h-3 rounded-full bg-white" />
           </span>
         </button>
 
-        <div className="px-3 py-2 rounded-lg border border-slate-800 bg-slate-900/40 flex items-center justify-between text-xs text-slate-300">
-          <span className="flex items-center gap-2 text-slate-400">
-            <Clock className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Sesión JWT</span>
+        <div className="px-3 py-2 rounded-[2px] border border-white/10 dark:border-[#1E222A] bg-[#132238] dark:bg-[#12151B] flex items-center justify-between font-mono text-[11px] text-slate-300">
+          <span className="flex items-center gap-2 text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+            <span>SESIÓN JWT</span>
           </span>
-          <span className="font-mono tabular-nums text-slate-100">
+          <span className="tabular-nums text-emerald-400 font-semibold">
             {formatDuration(elapsedSeconds)}
           </span>
         </div>
 
         {/* User Profile Footer */}
-        <div className="pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2 px-1">
+        <div className="pt-2.5 border-t border-white/10 dark:border-[#1E222A] flex items-center justify-between gap-2 px-1">
           <div className="flex items-center gap-2.5 min-w-0">
             {!avatarFailed ? (
               <img
                 src={avatarAdminImg}
                 alt={session.user.fullName}
                 onError={() => setAvatarFailed(true)}
-                className="w-8 h-8 rounded-lg object-cover border border-slate-700 shrink-0"
+                className="w-8 h-8 rounded-[2px] object-cover border border-white/15 shrink-0"
               />
             ) : (
-              <div className="w-8 h-8 rounded-lg bg-blue-600 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-[2px] bg-[#E65A28] text-white text-xs font-bold flex items-center justify-center shrink-0">
                 {session.user.fullName.slice(0, 2).toUpperCase()}
               </div>
             )}
@@ -230,7 +241,7 @@ export const AppShell: React.FC<AppShellProps> = ({
               <div className="text-xs font-semibold text-white truncate">
                 {session.user.fullName}
               </div>
-              <div className="text-[11px] text-slate-400 truncate">
+              <div className="font-mono text-[10px] text-slate-400 truncate uppercase">
                 {roleLabel} · {session.user.market}
               </div>
             </div>
@@ -240,7 +251,7 @@ export const AppShell: React.FC<AppShellProps> = ({
             onClick={onLogout}
             title="Cerrar sesión"
             aria-label="Cerrar sesión"
-            className="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-slate-800/80 transition-colors cursor-pointer shrink-0"
+            className="p-2 rounded-[2px] text-slate-400 hover:text-[#E65A28] hover:bg-white/5 transition-colors cursor-pointer shrink-0"
           >
             <LogOut className="w-4 h-4" />
           </button>
@@ -250,7 +261,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   );
 
   return (
-    <div className="min-h-screen flex bg-[#F4F6F9] dark:bg-[#060B14] text-slate-900 dark:text-slate-100">
+    <div className="min-h-screen flex bg-[#F7F3ED] dark:bg-[#0B0D10] text-[#111317] dark:text-slate-100">
       {/* Desktop Fixed Sidebar */}
       <aside className="hidden lg:block w-64 shrink-0 sticky top-0 h-screen">
         {sidebarContent}
@@ -260,7 +271,7 @@ export const AppShell: React.FC<AppShellProps> = ({
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex">
           <div
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
             onClick={() => setMobileMenuOpen(false)}
           />
           <aside className="relative w-72 max-w-[85vw] h-full z-10">
@@ -271,34 +282,34 @@ export const AppShell: React.FC<AppShellProps> = ({
 
       {/* Main Column */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Enterprise Top Bar */}
-        <header className="h-16 sticky top-0 z-30 bg-white/95 dark:bg-[#0D1524]/95 backdrop-blur-xs border-b border-slate-200 dark:border-slate-800 px-4 sm:px-8 flex items-center justify-between gap-4">
+        {/* Top Bar */}
+        <header className="h-16 sticky top-0 z-30 bg-[#FBF8F3]/95 dark:bg-[#0F1217]/95 backdrop-blur-xs border-b border-[#E2DCD2] dark:border-[#1E222A] px-4 sm:px-8 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 flex-1 min-w-0">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Abrir menú"
-              className="lg:hidden p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 shrink-0"
+              className="lg:hidden p-2 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] text-[#3A3733] dark:text-slate-200 hover:bg-[#EFE9DF] dark:hover:bg-[#151921] shrink-0"
             >
               <Menu className="w-5 h-5" />
             </button>
 
             {/* Breadcrumb Context */}
-            <div className="hidden xl:flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 shrink-0 mr-2">
-              <span className="font-semibold text-slate-700 dark:text-slate-200">NUAM</span>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <div className="hidden xl:flex items-center gap-1.5 font-mono text-xs text-[#6B665F] dark:text-slate-400 shrink-0 mr-2">
+              <span className="font-bold text-[#111827] dark:text-white">NUAM</span>
+              <ChevronRight className="w-3.5 h-3.5 text-[#8B857C]" />
               <span>{SECTION_TITLES[activeSection]}</span>
             </div>
 
             <div className="relative flex-1 max-w-md hidden sm:block">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-[#8B857C] dark:text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => onSearchQueryChange(e.target.value)}
                 onFocus={() => setCommandOpen(false)}
                 placeholder="Buscar emisores, usuarios o eventos... (Ctrl + K)"
-                className="w-full h-9 pl-9 pr-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full h-9 pl-9 pr-3 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#F5F0E8] dark:bg-[#151921] font-mono text-xs text-[#111317] dark:text-slate-100 placeholder:text-[#8B857C] dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#E65A28]"
               />
             </div>
           </div>
@@ -307,7 +318,7 @@ export const AppShell: React.FC<AppShellProps> = ({
             <button
               type="button"
               onClick={() => setCommandOpen(true)}
-              className="sm:hidden p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+              className="sm:hidden p-2 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] text-[#3A3733] dark:text-slate-300"
               aria-label="Buscar"
             >
               <Search className="w-4 h-4" />
@@ -316,15 +327,11 @@ export const AppShell: React.FC<AppShellProps> = ({
             <button
               type="button"
               onClick={onToggleDarkMode}
-              title={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              title={darkMode ? 'Cambiar a modo Beige & Marino' : 'Cambiar a modo Terminal Dark'}
               aria-label="Alternar tema"
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer shrink-0"
+              className="w-9 h-9 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#FBF8F3] dark:bg-[#151921] text-[#3A3733] dark:text-amber-400 hover:bg-[#EFE9DF] dark:hover:bg-[#1B202A] flex items-center justify-center cursor-pointer shrink-0"
             >
-              {darkMode ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-slate-600" />
-              )}
+              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
             {/* Notification Bell */}
@@ -333,26 +340,26 @@ export const AppShell: React.FC<AppShellProps> = ({
                 type="button"
                 onClick={() => setNotificationsOpen((v) => !v)}
                 aria-label="Notificaciones"
-                className="relative p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer shrink-0"
+                className="relative w-9 h-9 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#FBF8F3] dark:bg-[#151921] text-[#3A3733] dark:text-slate-200 hover:bg-[#EFE9DF] dark:hover:bg-[#1B202A] flex items-center justify-center cursor-pointer shrink-0"
               >
                 <Bell className="w-4 h-4" />
                 {recentAlerts.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center tabular-nums">
+                  <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-1 rounded-[2px] bg-[#E65A28] text-white font-mono text-[10px] font-bold flex items-center justify-center tabular-nums">
                     {Math.min(recentAlerts.length, 9)}
                   </span>
                 )}
               </button>
 
               {notificationsOpen && (
-                <div className="absolute right-0 mt-2 w-80 rounded-xl bg-white dark:bg-[#0D1524] border border-slate-200 dark:border-slate-800 shadow-xl p-3 z-50">
-                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-slate-800">
-                    <span className="text-xs font-semibold text-slate-900 dark:text-white">
+                <div className="absolute right-0 mt-2 w-80 rounded-[2px] bg-[#FBF8F3] dark:bg-[#11141A] border border-[#DFD8CD] dark:border-[#232833] shadow-xl p-3 z-50">
+                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E5DFD5] dark:border-[#1F242D]">
+                    <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#111317] dark:text-white">
                       Actividad Reciente
                     </span>
                     <button
                       type="button"
                       onClick={() => setNotificationsOpen(false)}
-                      className="text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                      className="font-mono text-[11px] text-[#6B665F] hover:text-[#111317] dark:hover:text-white cursor-pointer"
                     >
                       Cerrar
                     </button>
@@ -361,12 +368,12 @@ export const AppShell: React.FC<AppShellProps> = ({
                     {recentAlerts.slice(0, 5).map((item) => (
                       <div
                         key={item.id}
-                        className="p-2.5 rounded-lg border border-slate-100 dark:border-slate-800 bg-[#F8FAFC] dark:bg-slate-900/60 text-xs"
+                        className="p-2.5 rounded-[2px] border border-[#E5DFD5] dark:border-[#1F242D] bg-[#F5F0E8] dark:bg-[#161A22] text-xs"
                       >
-                        <div className="font-mono text-[11px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="font-mono text-[11px] font-semibold text-[#111317] dark:text-slate-100">
                           {item.action} · {item.module}
                         </div>
-                        <div className="text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">
+                        <div className="text-[#5C5852] dark:text-slate-400 mt-0.5 line-clamp-2">
                           {item.detail}
                         </div>
                       </div>
@@ -380,9 +387,9 @@ export const AppShell: React.FC<AppShellProps> = ({
               <button
                 type="button"
                 onClick={onOpenPresentModal}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3.5 rounded-[2px] bg-[#0E1B2E] dark:bg-[#1A1F29] border border-[#0E1B2E] dark:border-[#2A303D] hover:bg-[#162742] dark:hover:bg-[#232936] text-white text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
-                <Send className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <Send className="w-3.5 h-3.5" />
                 <span>Presentar DJ1948</span>
               </button>
             )}
@@ -391,7 +398,7 @@ export const AppShell: React.FC<AppShellProps> = ({
               <button
                 type="button"
                 onClick={onOpenNewQualification}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#0B1528] dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-[2px] bg-[#E65A28] hover:bg-[#D14D1E] text-white text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Nueva Calificación</span>
@@ -410,32 +417,32 @@ export const AppShell: React.FC<AppShellProps> = ({
       {/* Ctrl+K Quick Navigation Modal */}
       {commandOpen && (
         <div
-          className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-start justify-center pt-20 p-4"
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-start justify-center pt-20 p-4"
           onClick={() => setCommandOpen(false)}
         >
           <div
-            className="w-full max-w-lg rounded-xl bg-white dark:bg-[#0D1524] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden"
+            className="w-full max-w-lg rounded-[2px] bg-[#FBF8F3] dark:bg-[#11141A] border border-[#DFD8CD] dark:border-[#232833] shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-100 dark:border-slate-800">
-              <Search className="w-4 h-4 text-slate-400" />
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-[#E5DFD5] dark:border-[#1F242D]">
+              <Search className="w-4 h-4 text-[#8B857C]" />
               <input
                 type="text"
                 autoFocus
                 value={searchQuery}
                 onChange={(e) => onSearchQueryChange(e.target.value)}
                 placeholder="Ir a módulo o filtrar emisores y usuarios..."
-                className="flex-1 bg-transparent text-sm text-slate-900 dark:text-white focus:outline-none"
+                className="flex-1 bg-transparent font-mono text-xs text-[#111317] dark:text-white focus:outline-none"
               />
               <button
                 type="button"
                 onClick={() => setCommandOpen(false)}
-                className="text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                className="font-mono text-xs text-[#6B665F] hover:text-[#111317] dark:hover:text-white cursor-pointer"
               >
                 ESC
               </button>
             </div>
-            <div className="p-2 divide-y divide-slate-100 dark:divide-slate-800">
+            <div className="p-2 divide-y divide-[#EFE9DF] dark:divide-[#1F242D]">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -446,9 +453,9 @@ export const AppShell: React.FC<AppShellProps> = ({
                       onSelectSection(item.id);
                       setCommandOpen(false);
                     }}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 text-left text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-left font-mono text-xs text-[#3A3733] dark:text-slate-200 hover:bg-[#EFE9DF] dark:hover:bg-[#161A22] rounded-[2px] cursor-pointer"
                   >
-                    <Icon className="w-4 h-4 text-blue-600" />
+                    <Icon className="w-4 h-4 text-[#E65A28]" />
                     <span>Ir a {item.label}</span>
                   </button>
                 );

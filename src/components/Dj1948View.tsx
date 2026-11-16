@@ -135,22 +135,23 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
   return (
     <div className="space-y-6">
       <div>
-        <div className="text-[11px] font-semibold tracking-[0.14em] text-blue-700 dark:text-blue-400 uppercase">
-          Procesamiento Normativo SII / BVL / BVC
+        <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold tracking-[0.14em] text-[#D45120] dark:text-[#E65A28] uppercase">
+          <span className="w-1.5 h-1.5 bg-[#E65A28] inline-block" />
+          <span>PROCESAMIENTO NORMATIVO SII / BVL / BVC</span>
         </div>
-        <h1 className="font-display text-2xl font-bold text-slate-950 dark:text-white tracking-tight mt-1">
-          Módulo de Carga Masiva (DJ1948)
+        <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+          MÓDULO DE CARGA MASIVA (DJ1948)
         </h1>
       </div>
 
       {/* Main Upload Card */}
-      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D1524] p-6">
+      <div className="rounded-[2px] border border-[#DFD8CD] dark:border-[#1F242D] bg-[#FBF8F3] dark:bg-[#11141A] p-6">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
           <div>
-            <h2 className="font-display text-lg font-bold text-slate-950 dark:text-white">
+            <h2 className="font-display text-base sm:text-lg font-extrabold uppercase text-[#111317] dark:text-white">
               Cargar Declaración Jurada DJ1948
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
+            <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1 max-w-2xl">
               Seleccione el archivo plano (.csv o .txt) correspondiente al Formulario DJ1948 para la
               incorporación automática de registros y factores de calificación tributaria.
             </p>
@@ -158,7 +159,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
           <button
             type="button"
             onClick={downloadDj1948TemplateCsv}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 cursor-pointer whitespace-nowrap shrink-0 self-start"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#F5F0E8] dark:bg-[#161A22] hover:bg-[#EFE9DF] dark:hover:bg-[#1E232E] font-mono text-[11px] font-semibold uppercase text-[#111317] dark:text-slate-200 cursor-pointer whitespace-nowrap shrink-0 self-start"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Descargar Plantilla CSV</span>
@@ -170,7 +171,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
           <div className="md:col-span-3">
             <label
               htmlFor="dj-year"
-              className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5"
+              className="block font-mono text-[11px] font-semibold uppercase tracking-wider text-[#3A3733] dark:text-slate-300 mb-1.5"
             >
               Año Tributario
             </label>
@@ -178,7 +179,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
               id="dj-year"
               value={ejercicio}
               onChange={(e) => setEjercicio(Number(e.target.value))}
-              className="w-full h-11 px-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 text-xs font-medium text-slate-900 dark:text-white"
+              className="w-full h-11 px-3 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#F2EDE4] dark:bg-[#151921] text-xs font-mono font-medium text-[#111317] dark:text-white"
             >
               <option value={2026}>2026 (Vigente)</option>
               <option value={2025}>2025</option>
@@ -190,7 +191,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
           <div className="md:col-span-9">
             <label
               htmlFor="dj-process"
-              className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5"
+              className="block font-mono text-[11px] font-semibold uppercase tracking-wider text-[#3A3733] dark:text-slate-300 mb-1.5"
             >
               Tipo de Proceso
             </label>
@@ -198,7 +199,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
               id="dj-process"
               value={processType}
               onChange={(e) => setProcessType(e.target.value)}
-              className="w-full h-11 px-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 text-xs font-medium text-slate-900 dark:text-white"
+              className="w-full h-11 px-3 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#F2EDE4] dark:bg-[#151921] text-xs font-medium text-[#111317] dark:text-white"
             >
               <option value="Declaración Jurada 1948 (Retiros y Dividendos Distribuidos)">
                 Declaración Jurada 1948 (Retiros y Dividendos Distribuidos)
@@ -230,12 +231,12 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
               if (permissions.uploadDj1948) fileInputRef.current?.click();
             }
           }}
-          className={`rounded-xl border border-dashed p-10 text-center transition-colors ${
+          className={`rounded-[2px] border border-dashed p-10 text-center transition-colors ${
             permissions.uploadDj1948 ? 'cursor-pointer' : 'opacity-60 cursor-not-allowed'
           } ${
             dragActive
-              ? 'border-blue-500 bg-blue-50/70 dark:bg-blue-950/30'
-              : 'border-slate-300 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900/50 hover:border-blue-500'
+              ? 'border-[#E65A28] bg-[#E65A28]/10'
+              : 'border-[#C9C1B4] dark:border-[#2C3340] bg-[#F2EDE4]/60 dark:bg-[#151921]/70 hover:border-[#E65A28]'
           }`}
         >
           <input
@@ -251,21 +252,21 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
 
           {selectedFile ? (
             <div className="flex flex-col items-center">
-              <FileText className="w-9 h-9 text-blue-600 mb-3" />
-              <p className="text-sm font-semibold text-slate-950 dark:text-white">
+              <FileText className="w-9 h-9 text-[#E65A28] mb-3" />
+              <p className="text-sm font-semibold text-[#111317] dark:text-white">
                 {selectedFile.name}
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 tabular-nums">
+              <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1 tabular-nums">
                 {selectedFile.rows} filas detectadas listas para validación
               </p>
             </div>
           ) : (
             <div className="flex flex-col items-center">
-              <FolderUp className="w-9 h-9 text-blue-600 dark:text-blue-400 mb-3" />
-              <p className="text-sm font-semibold text-slate-950 dark:text-white">
+              <FolderUp className="w-9 h-9 text-[#E65A28] mb-3" />
+              <p className="text-sm font-semibold text-[#111317] dark:text-white">
                 Haga clic o arrastre el archivo DJ1948 aquí
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1">
                 Soporta formatos CSV y TXT delimitados por punto y coma (;) o comas (,)
               </p>
             </div>
@@ -274,10 +275,10 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
 
         {feedback && (
           <div
-            className={`mt-4 p-3 rounded-lg border text-xs flex items-center gap-2 ${
+            className={`mt-4 p-3 rounded-[2px] border text-xs flex items-center gap-2 ${
               feedback.type === 'success'
-                ? 'border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300'
-                : 'border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300'
+                ? 'border-emerald-300 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300'
+                : 'border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300'
             }`}
           >
             {feedback.type === 'success' ? (
@@ -294,12 +295,12 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
             <button
               type="button"
               onClick={handleLoadSample}
-              className="text-xs font-semibold text-blue-700 dark:text-blue-400 hover:underline cursor-pointer"
+              className="font-mono text-xs font-semibold text-[#D45120] dark:text-[#E65A28] hover:underline cursor-pointer"
             >
               Cargar lote de ejemplo corporativo
             </button>
           ) : (
-            <span className="text-xs text-slate-500">
+            <span className="font-mono text-xs text-[#6B665F]">
               Modo Consultor: acceso de solo lectura al historial de cargas.
             </span>
           )}
@@ -309,7 +310,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
               type="button"
               onClick={handleProcess}
               disabled={uploading}
-              className="px-5 py-2.5 rounded-lg bg-[#0B1528] dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 disabled:opacity-60 text-white text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap"
+              className="px-5 py-2.5 rounded-[2px] bg-[#0E1B2E] dark:bg-[#E65A28] hover:bg-[#162742] dark:hover:bg-[#D14D1E] disabled:opacity-60 text-white text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap"
             >
               {uploading ? 'Procesando en Supabase...' : 'Procesar Carga Masiva'}
             </button>
@@ -318,15 +319,15 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
       </div>
 
       {/* Historial de Procesamiento de Cargas */}
-      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0D1524] overflow-hidden">
-        <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-4">
-          <h2 className="font-display text-base font-bold text-slate-950 dark:text-white">
+      <div className="rounded-[2px] border border-[#DFD8CD] dark:border-[#1F242D] bg-[#FBF8F3] dark:bg-[#11141A] overflow-hidden">
+        <div className="p-5 border-b border-[#E5DFD5] dark:border-[#1F242D] bg-[#F5F0E8]/60 dark:bg-[#13171F] flex items-center justify-between gap-4">
+          <h2 className="font-display text-sm sm:text-base font-extrabold uppercase text-[#111317] dark:text-white">
             Historial de Procesamiento de Cargas
           </h2>
           <button
             type="button"
             onClick={onRefresh}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 cursor-pointer whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[2px] border border-[#DDD6CB] dark:border-[#232833] bg-[#FBF8F3] dark:bg-[#161A22] hover:bg-[#EFE9DF] dark:hover:bg-[#1E232E] font-mono text-[11px] font-semibold uppercase text-[#111317] dark:text-slate-200 cursor-pointer whitespace-nowrap"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Refrescar Historial</span>
@@ -336,7 +337,7 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-[#F8FAFC] dark:bg-slate-900/70 border-b border-slate-100 dark:border-slate-800 text-[11px] font-semibold tracking-wider text-slate-500 dark:text-slate-400">
+              <tr className="bg-[#F5F0E8] dark:bg-[#0D1016] border-b border-[#E5DFD5] dark:border-[#1F242D] font-mono text-[11px] font-semibold tracking-wider uppercase text-[#6B665F] dark:text-slate-400">
                 <th className="py-3 px-5">ID</th>
                 <th className="py-3 px-4">NOMBRE DE ARCHIVO</th>
                 <th className="py-3 px-4">EJERCICIO</th>
@@ -347,45 +348,45 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
                 <th className="py-3 px-5 text-right">ACCIONES</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+            <tbody className="divide-y divide-[#E9E3D9] dark:divide-[#1B2029] text-xs">
               {batches.map((b) => (
                 <tr
                   key={b.id}
-                  className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors"
+                  className="hover:bg-[#F5F0E8]/70 dark:hover:bg-[#161A22]/70 transition-colors"
                 >
-                  <td className="py-3.5 px-5 font-mono tabular-nums text-slate-600 dark:text-slate-300">
+                  <td className="py-3.5 px-5 font-mono tabular-nums text-[#524E48] dark:text-slate-300">
                     #{b.displayId}
                   </td>
-                  <td className="py-3.5 px-4 font-semibold text-slate-950 dark:text-white whitespace-nowrap">
+                  <td className="py-3.5 px-4 font-semibold text-[#111317] dark:text-white whitespace-nowrap">
                     {b.fileName}
                   </td>
-                  <td className="py-3.5 px-4 font-mono tabular-nums text-slate-600 dark:text-slate-300">
+                  <td className="py-3.5 px-4 font-mono tabular-nums text-[#524E48] dark:text-slate-300">
                     {b.ejercicio}
                   </td>
-                  <td className="py-3.5 px-4 font-mono tabular-nums text-slate-700 dark:text-slate-200">
+                  <td className="py-3.5 px-4 font-mono tabular-nums text-[#111317] dark:text-slate-200">
                     {b.processedCount}
                   </td>
                   <td className="py-3.5 px-4 font-mono tabular-nums whitespace-nowrap">
-                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span className="font-semibold text-emerald-700 dark:text-emerald-400">
                       {b.successCount}
                     </span>
-                    <span className="mx-1 text-slate-400">/</span>
-                    <span className="font-semibold text-red-600 dark:text-red-400">
+                    <span className="mx-1 text-[#8B857C]">/</span>
+                    <span className="font-semibold text-[#D45120] dark:text-red-400">
                       {b.errorCount}
                     </span>
                   </td>
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
-                      className={`font-semibold ${
+                      className={`inline-block px-2 py-0.5 rounded-[2px] border font-mono text-[11px] font-semibold ${
                         b.estado === 'EXITOSO'
-                          ? 'text-emerald-600 dark:text-emerald-400'
-                          : 'text-amber-600 dark:text-amber-400'
+                          ? 'border-emerald-400/50 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
+                          : 'border-[#E65A28]/50 bg-[#E65A28]/10 text-[#D45120] dark:text-[#F27445]'
                       }`}
                     >
                       {b.estado}
                     </span>
                   </td>
-                  <td className="py-3.5 px-4 font-mono tabular-nums text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                  <td className="py-3.5 px-4 font-mono tabular-nums text-[#6B665F] dark:text-slate-400 whitespace-nowrap">
                     {formatDate(b.createdAt)}
                   </td>
                   <td className="py-3.5 px-5 text-right whitespace-nowrap">
@@ -393,20 +394,20 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
                       <button
                         type="button"
                         onClick={() => onDeleteBatch(b)}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-red-200 dark:border-red-900/60 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 text-xs font-medium cursor-pointer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-[2px] border border-red-300 dark:border-red-900/60 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 font-mono text-[11px] font-medium cursor-pointer"
                       >
                         <Trash2 className="w-3 h-3" />
                         <span>Eliminar</span>
                       </button>
                     ) : (
-                      <span className="text-slate-400">—</span>
+                      <span className="text-[#8B857C]">—</span>
                     )}
                   </td>
                 </tr>
               ))}
               {batches.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="py-8 text-center text-slate-500 text-xs">
+                  <td colSpan={8} className="py-8 text-center font-mono text-[#6B665F] text-xs">
                     No hay cargas masivas registradas aún.
                   </td>
                 </tr>

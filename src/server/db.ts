@@ -28,6 +28,7 @@ const pool = connectionString
       connectionString,
       ssl: { rejectUnauthorized: false },
       max: 5,
+      connectionTimeoutMillis: 3000,
     })
   : null;
 
