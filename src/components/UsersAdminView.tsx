@@ -11,6 +11,7 @@ import {
   UserX,
   X,
 } from 'lucide-react';
+import { AnimatedH1 } from './AnimatedH1.tsx';
 import type {
   AuthSession,
   MarketCode,
@@ -150,9 +151,9 @@ export const UsersAdminView: React.FC<UsersAdminViewProps> = ({
             <span className="w-1.5 h-1.5 bg-[#E65A28] inline-block" />
             <span>SEGURIDAD & GOBIERNO CORPORATIVO</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+          <AnimatedH1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
             ADMINISTRACIÓN DE USUARIOS Y ROLES
-          </h1>
+          </AnimatedH1>
           <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1">
             Control de acceso basado en roles (RBAC) en Django + Supabase PostgreSQL con tokens JWT
           </p>

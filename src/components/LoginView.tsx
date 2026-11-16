@@ -11,6 +11,7 @@ import {
   Sun,
   X,
 } from 'lucide-react';
+import { AnimatedH1 } from './AnimatedH1.tsx';
 import { nuamApi } from '../lib/api.ts';
 import type { AuthSession } from '../types/nuam.ts';
 
@@ -124,12 +125,12 @@ export const LoginView: React.FC<LoginViewProps> = ({
 
         {/* Center Hero Copy */}
         <div className="my-12 lg:my-auto max-w-xl">
-          <h1 className="font-display text-4xl sm:text-5xl xl:text-[58px] font-extrabold tracking-[-0.03em] leading-[1.03]">
+          <AnimatedH1 className="font-display text-4xl sm:text-5xl xl:text-[58px] font-extrabold tracking-[-0.03em] leading-[1.03]">
             <span className="block text-white">Un mercado</span>
             <span className="block text-white">claro</span>
             <span className="block text-[#E65A28]">mueve la</span>
             <span className="block text-[#E65A28]">región.</span>
-          </h1>
+          </AnimatedH1>
 
           <p className="mt-7 text-sm sm:text-[15px] text-zinc-400 leading-relaxed max-w-md">
             Plataforma centralizada de cumplimiento tributario, validación de factores DJ1948 y

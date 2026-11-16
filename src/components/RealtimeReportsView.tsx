@@ -8,6 +8,7 @@ import {
   TrendingUp,
   Users,
 } from 'lucide-react';
+import { AnimatedH1 } from './AnimatedH1.tsx';
 import type { AuditLog, DashboardSummary, Dj1948Batch, TaxQualification } from '../types/nuam.ts';
 
 interface RealtimeReportsViewProps {
@@ -78,9 +79,9 @@ export const RealtimeReportsView: React.FC<RealtimeReportsViewProps> = ({
               <span>Última sincronización {formatTime(lastSyncedAt)}</span>
             </span>
           </div>
-          <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+          <AnimatedH1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
             REPORTES EN TIEMPO REAL
-          </h1>
+          </AnimatedH1>
           <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1">
             Consolidado ejecutivo de capitales declarados, cargas DJ1948 y bitácora regional
           </p>

@@ -8,6 +8,7 @@ import {
   RefreshCw,
   Trash2,
 } from 'lucide-react';
+import { AnimatedH1 } from './AnimatedH1.tsx';
 import { downloadDj1948TemplateCsv } from '../lib/api.ts';
 import type { AuthSession, Dj1948Batch } from '../types/nuam.ts';
 
@@ -139,9 +140,9 @@ export const Dj1948View: React.FC<Dj1948ViewProps> = ({
           <span className="w-1.5 h-1.5 bg-[#E65A28] inline-block" />
           <span>PROCESAMIENTO NORMATIVO SII / BVL / BVC</span>
         </div>
-        <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+        <AnimatedH1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
           MÓDULO DE CARGA MASIVA (DJ1948)
-        </h1>
+        </AnimatedH1>
       </div>
 
       {/* Main Upload Card */}

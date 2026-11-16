@@ -13,6 +13,7 @@ import {
   Table2,
   Zap,
 } from 'lucide-react';
+import { AnimatedH1 } from './AnimatedH1.tsx';
 import type { AuditLog, DashboardSummary } from '../types/nuam.ts';
 
 interface DashboardViewProps {
@@ -92,9 +93,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span className="w-1.5 h-1.5 bg-[#E65A28] inline-block" />
             <span>CONSOLIDADO REGIONAL · CHILE (CL) · PERÚ (PE) · COLOMBIA (CO)</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+          <AnimatedH1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
             PANEL DE CONTROL TRIBUTARIO
-          </h1>
+          </AnimatedH1>
           <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1">
             Supervisión institucional DJ1948 · Factores de Crédito IDPC Art. 14 · Bitácora
             criptográfica

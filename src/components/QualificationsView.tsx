@@ -9,6 +9,7 @@ import {
   Search,
   Trash2,
 } from 'lucide-react';
+import { AnimatedH1 } from './AnimatedH1.tsx';
 import type {
   AuthSession,
   QualificationMarket,
@@ -91,9 +92,9 @@ export const QualificationsView: React.FC<QualificationsViewProps> = ({
             <span className="w-1.5 h-1.5 bg-[#E65A28] inline-block" />
             <span>REGISTRO REGIONAL DE EMISORES</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
+          <AnimatedH1 className="font-display text-2xl sm:text-[28px] font-extrabold text-[#111317] dark:text-white tracking-tight uppercase mt-1">
             CALIFICACIONES TRIBUTARIAS
-          </h1>
+          </AnimatedH1>
           <p className="font-mono text-xs text-[#6B665F] dark:text-slate-400 mt-1">
             Administración de factores de crédito, dividendos y retenciones en Santiago, Lima y
             Colombia
