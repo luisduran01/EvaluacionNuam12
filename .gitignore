@@ -12,3 +12,4 @@ venv/
 .env.*
 .env.local
 .env.example
+schema.sql
